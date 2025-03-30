@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blank Page</title>
+</head>
+<body>
+    <h1>this is the main page</h1>
+    <a href="api/auth/signup">signup</a>
+    <a href="api/auth/signin">signin</a>
+    <a href="api/auth/signout">logout</a>
+    <a href="api/auth/forgotPassword">forgot password</a>
+    <a href="api/auth/changePassword">change password</a>
+    <a href="api/auth/adminPanel">admin panel</a>
+    <a href="/api/auth/single-user?_id=<%=User.userId%>">My Profile</a>
+
+    <% if(User.isMfaActive){%>
+        <button id="activate2FA">deActivate 2fa</button>
+        <%}else{%>
+    <button id="activate2FA">activate 2fa</button>
+    <%}%>
+    <a href="all-posts">all posts</a>
+    <script src="/mfa.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moderators Page</title>
+</head>
+<body>
+    <a href="/">Main</a>
+
+    
+
+    
+    <h1>Moderators</h1>
+    <div id="moderators">
+        <% if (moderators.length === 0) { %>
+            <p>No Moderators available.</p>
+        <% } else { %>
+            <% moderators.forEach(Moderator => { %>
+                <div class="Moderator">
+                    <h3><a href="/api/auth/single-user?_id=<%=Moderator._id%>"><%= Moderator.email %></a><h3>
+                        <p><%= Moderator.role %></p>
+                    <h3><a href="users/update-moderator?_id=<%=Moderator._id%>">Update Moderator</a><h3>
+
+                    <p>-----------------------------------------------------------------------</p>
+ 
+                </div>
+            <% }) %>
+        <% } %>
+    </div>
+
+    <script src="/searchUsers.js">
+    </script>
+</body>
+</html>

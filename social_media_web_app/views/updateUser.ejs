@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update User</title>
+</head>
+<body>
+    <h1>Update  ur User</h1>
+    <%if(User!== null){%>
+        <form id="updateUserForm">
+            <label for="role">Role:</label>
+            <select id="role" required>
+                <option value="user" <%= User.role === "user" ? "selected" : "" %>>User</option>
+                <option value="moderator" <%= User.role === "moderator" ? "selected" : "" %>>Moderator</option>
+                <option value="admin" <%= User.role === "admin" ? "selected" : "" %>>Admin</option>
+            </select>
+            <br><br>
+            
+            <button type="submit">Update User</button>
+        </form>
+        
+    <button id="deleteUserButton">Delete User</button> <!-- Delete button -->
+<%}else{%>
+    <h2>User is not found</h>
+    <%}%>
+    <a href="/api/auth/adminPanel/users">Back to Users</a>
+
+    <!--<script src="/app.js"></script>-->
+   
+
+    <script src="/updateUser.js"></script>
+
+</body>
+</html>
+

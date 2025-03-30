@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single User</title>
+</head>
+<body>
+
+    <h1>Single User</h1>
+    <div id="userContainer">
+        <h2><%= User.email %></h2>
+        <p><%= User.role %></p>
+
+
+    </div>
+    <h1>Posts</h1>
+    <div id="postsContainer">
+        <% if (posts.length === 0) { %>
+            <p>No posts available.</p>
+        <% } else { %>
+            <% posts.forEach(post => { %>
+                <div class="post">
+                    <h2><%= post.title %></h2>
+                    <p><%= post.description %></p>
+                    <p><strong>By:</strong> <%= post.userId ? User.email : 'Unknown' %></p>
+                    <h3><a href="/single-post?_id=<%=post._id%>">View Post</a><h3>
+                    <h3><a href="/update-post?_id=<%=post._id%>">Update Post</a><h3>
+
+                     
+
+                    <p>-----------------------------------------------------------------------</p>
+ 
+                </div>
+            <% }) %>
+        <% } %>
+    </div>
+
+</body>
+</html>
+
+
+
+

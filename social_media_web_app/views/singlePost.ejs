@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single Post</title>
+</head>
+<body>
+
+    <h1>Single Post</h1>
+    <div id="postContainer">
+        <h2><%= Post.title %></h2>
+        <p><%= Post.description %></p>
+        <h3><strong>By:</strong><a href="/api/auth/single-user?_id=<%=Post.userId._id%>"><%= Post.userId ? Post.userId.email : 'Unknown' %></a><h3>
+
+
+    </div>
+    <form id="addCommentForm">
+        <label for="comment">add Comment:</label>
+        <input type="text" id="comment"required><br><br>
+        <button type="submit">add Comment</button>
+    </form>
+    <form id="likeForm">
+        <button id="like"type="submit">Like</button>
+    </form>
+    
+    <button id="toggleComments">Show Comments</button>
+    <button id="toggleLikes">Show Likes</button>
+
+    <div id="commentsContainer" style="display: none;">
+        <% if (Post.comments.length === 0) { %>
+            <p>No comments available.</p>
+        <% } else { %>
+            <% Post.comments.forEach(comment => { %>
+                <div class="comment">
+                    <h2><%= comment.text %></h2>
+                    <p><strong>By:</strong> <%= comment.userId ? comment.userId : 'Unknown' %></p>
+
+                    <button class="deleteCommentButton" data-comment-id="<%= comment._id %>">Delete Comment</button> <!-- Added data attribute -->
+                    <p>-----------------------------------------------------------------------</p>
+                </div>
+            <% }) %>
+        <% } %>
+    </div>
+  <script src="/showComments.js"></script>
+
+  <div id="likesContainer" style="display: none;">
+    <% if (Post.likes.length === 0) { %>
+        <p>No Likes available.</p>
+    <% } else { %>
+        <% Post.likes.forEach(like => { %>
+            <div class="like">
+                <p><strong>By:</strong> <%= like.userId ? like.userId : 'Unknown' %></p>
+                <p>-----------------------------------------------------------------------</p>
+            </div>
+        <% }) %>
+    <% } %>
+</div>
+<script src="/showLikes.js"></script>
+
+  <script src="/addComment.js"></script>
+</body>
+</html>
+
+
+
+
