@@ -57,7 +57,7 @@ exports.signin = async (req,res)=>{
      if(existingUser){
 		const result = await doPassValidation(password,existingUser.password)
 		//console.log(result)
-       console.log("is the nigga active :",existingUser.isMfaActive)
+       console.log("is the user active :",existingUser.isMfaActive)
         if(result){
 
 			/*const token = jwt.sign({
@@ -104,7 +104,6 @@ exports.signin = async (req,res)=>{
 }
 exports.signin_get = (req,res)=>{
     
-	//res.json({message:"hiiiiiiiiiiiii"});
      res.render('signin')
 }
 /////////////////
